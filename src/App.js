@@ -12,9 +12,6 @@ function App() {
       <div>
         <Header username={username} />
         <Switch>
-          {
-            // ENTERSTORE PAGE
-          }
           <Route
             exact
             path="/"
