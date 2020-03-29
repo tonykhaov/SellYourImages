@@ -15,8 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background: url(./img/background.jpg) no-repeat bottom;
-  background-color: #744210;
+  background-color: #e4e7eb;
 }
 
 h1 {
