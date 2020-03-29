@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { grey } from "../Utilities";
+import { blue, box_shadow } from "../Utilities";
 
 function Header() {
   return (
@@ -15,8 +15,9 @@ const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  border: 1px solid ${grey[300]};
+  background-color: ${blue[900]};
+  color: white;
+  text-shadow: ${box_shadow[1]};
 `;
 
 export default Header;

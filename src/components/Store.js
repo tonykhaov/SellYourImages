@@ -1,14 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-
+import Image from "./Image";
+import { SAMPLE_IMAGES } from "../sample-images";
+import AddImage from "./AddImage";
 function Store(props) {
-  return <StoreGrid></StoreGrid>;
+  useEffect(() => {
+    props.setImages(SAMPLE_IMAGES);
+  });
+
+  const { username } = props.match.params;
+  return (
+    <StoreWrapper>
+      <StoreTitle>
+        <h1>
+          Welcome back <strong>{username ? username : "toi"}</strong>.
+        </h1>
+      </StoreTitle>
+      {props.images && (
+        <ImagesGrid>
+          {Object.keys(props.images).map(key => (
+            <Image key={key} image={props.images[key]} index={key} />
+          ))}
+          <AddImage />
+        </ImagesGrid>
+      )}
+    </StoreWrapper>
+  );
 }
 
-const StoreGrid = styled.div`
+const StoreWrapper = styled.div`
+  min-height: calc(100vh - 72px);
+`;
+
+const StoreTitle = styled.div`
+  text-align: center;
+  padding: 16px 0 24px;
+  h1 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+`;
+
+const ImagesGrid = styled.div`
+  max-width: 1360px;
+  margin: auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border: 1px solid;
-  height: 90vh;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-row-gap: 24px;
+  grid-column-gap: 24px;
 `;
 export default Store;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EnterStore from "./components/EnterStore";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Store from "./components/Store";
@@ -7,16 +7,21 @@ import styled from "styled-components";
 
 function App() {
   const [username, setUsername] = useState(null);
+  const [images, setImages] = useState(null);
+
   return (
     <Router>
       <div>
-        <Header username={username} />
+        <Header />
+        {
+          //username && <div>welcome {username}</div>
+        }
         <Switch>
           <Route
             exact
             path="/"
             render={props => (
-              <EnterStore setUsername={setUsername} {...props} />
+              <EnterStore {...props} setUsername={setUsername} />
             )}
           />
 
@@ -26,7 +31,14 @@ function App() {
           <Route
             exact
             path="/store/:username"
-            render={props => <Store {...props} username={username} />}
+            render={props => (
+              <Store
+                {...props}
+                setImages={setImages}
+                images={images}
+                username={username}
+              />
+            )}
           />
 
           {
