@@ -3,24 +3,21 @@ import styled from "styled-components";
 import Image from "./Image";
 import { SAMPLE_IMAGES } from "../sample-images";
 import AddImage from "./AddImage";
+
 function Store(props) {
   useEffect(() => {
     props.setImages(SAMPLE_IMAGES);
   });
-
-  const { username } = props.match.params;
   return (
     <StoreWrapper>
-      <StoreTitle>
-        <h1>
-          Welcome back <strong>{username ? username : "toi"}</strong>.
-        </h1>
-      </StoreTitle>
+      <StoreTitle></StoreTitle>
       {props.images && (
         <ImagesGrid>
-          {Object.keys(props.images).map(key => (
-            <Image key={key} image={props.images[key]} index={key} />
-          ))}
+          {Object.keys(props.images)
+            .sort((a, b) => a - b)
+            .map(key => (
+              <Image key={key} image={props.images[key]} index={key} />
+            ))}
           <AddImage />
         </ImagesGrid>
       )}
@@ -47,7 +44,7 @@ const ImagesGrid = styled.div`
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 256px);
   grid-row-gap: 24px;
   grid-column-gap: 24px;
 `;

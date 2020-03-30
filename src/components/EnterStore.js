@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Button, Input, Card } from "../styled_components";
 import { orange, grey, double_box_shadow } from "../Utilities";
-import * as imageURL from "../img/background.jpg";
 
 function EnterStore(props) {
   const inputEl = useRef(null);
@@ -14,7 +13,7 @@ function EnterStore(props) {
   const handleSubmit = e => {
     e.preventDefault();
     const username = inputEl.current.value;
-    props.history.push(`/store/${username}`);
+    props.history.push(`/`);
     props.setUsername(username);
   };
 
@@ -33,8 +32,7 @@ function EnterStore(props) {
         <ButtonForm type="submit">Valider</ButtonForm>
         <Author href="http://github.com/tonykhaov">par Tony KHAOV</Author>
       </FormWrapper>
-      <BackgroundEnterStoreImage />
-      <BackgroundEnterStoreFilter />
+      <Background />
     </CardWrapper>
   );
 }
@@ -77,6 +75,10 @@ const InputForm = styled(Input)`
   margin: 24px 0 12px;
   padding: 10px 16px;
   width: 100%;
+  background-color: white;
+  &:focus {
+    background-color: ${grey[100]};
+  }
 `;
 
 const ButtonForm = styled(Button)`
@@ -115,24 +117,14 @@ const Author = styled.a`
   }
 `;
 
-const BackgroundEnterStoreImage = styled.div`
+const Background = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: url(${imageURL}) bottom no-repeat;
   z-index: -10;
-  opacity: 1;
-`;
-const BackgroundEnterStoreFilter = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background: black;
-  z-index: -9;
   opacity: 0.5;
 `;
 export default EnterStore;
