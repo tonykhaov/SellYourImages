@@ -1,5 +1,11 @@
 import React from "react";
-import { formatPrice, double_box_shadow, pink } from "../Utilities";
+import {
+  formatPrice,
+  double_box_shadow,
+  pink,
+  grey,
+  black
+} from "../Utilities";
 import styled from "styled-components";
 import { Card, Button } from "../styled_components";
 
@@ -12,12 +18,12 @@ function Image(props) {
         <ImageDescription>
           <h1>{name}</h1>
           <Author>
-            Vendu par <strong>{author}</strong>.
+            par <span>{author}</span> !
           </Author>
-          <Price>{formatPrice(price)}</Price>
-          <AddCart>
-            <AddCartButton>Acheter</AddCartButton>
-          </AddCart>
+          <PriceCartWrapper>
+            <Price>{formatPrice(price)}</Price>
+            <CartButton>Acheter</CartButton>
+          </PriceCartWrapper>
         </ImageDescription>
       </ImageCard>
     </ImageWrapper>
@@ -26,12 +32,13 @@ function Image(props) {
 
 const ImageWrapper = styled.div`
   overflow: hidden;
+  position: relative;
+  border-radius: 0 0 8px 8px;
   &:hover {
     box-shadow: ${double_box_shadow[3]};
     transform: translate(-2px, -2px);
     transition: all 0.1s ease-in;
   }
-  position: relative;
 `;
 
 const ImageCard = styled(Card)`
@@ -39,7 +46,8 @@ const ImageCard = styled(Card)`
   align-items: center;
   flex-direction: column;
   padding: 0;
-  padding-bottom: 24px;
+  padding-bottom: 12px;
+  border-radius: 0 0 8px 8px;
 `;
 
 const ImageDescription = styled.div`
@@ -48,32 +56,41 @@ const ImageDescription = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  padding: 6px 8px;
+  overflow-wrap: break-word;
+  padding: 24px 24px;
   h1 {
     font-size: 24px;
+    font-weight: 400;
   }
 `;
 
 const Author = styled.p`
-  margin: 6px 0 12px 0;
+  margin: 12px 0 16px;
+  color: ${grey[600]};
+  span {
+    color: ${grey[700]};
+  }
+`;
+
+const PriceCartWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 
 const Price = styled.p`
   font-size: 24px;
+  font-weight: 400;
+  color: ${black[900]};
 `;
 
-const AddCart = styled.div`
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-`;
-
-const AddCartButton = styled(Button)`
+const CartButton = styled(Button)`
   box-shadow: none;
   background: ${pink.vivid[600]};
   color: white;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   border-radius: 4px;
   &:hover {
     box-shadow: none;

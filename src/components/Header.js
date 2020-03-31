@@ -1,33 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import { blue } from "../Utilities";
-import Toggle from "./Toggle";
-import Modal from "./Modal";
+import { blue, grey } from "../Utilities";
+
 function Header() {
   return (
     <HeaderWrapper>
-      <Toggle>
-        {({ on, toggle }) => (
-          <LoginWrapper onClick={toggle}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="icon-user"
-            >
-              <path class="primary" d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
-              <path
-                class="secondary"
-                d="M21 20v-1a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v1c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2z"
-                transform="translate(0 -1)"
-              />
-            </svg>
-            <p>Se connecter</p>
-            <Modal on={on} toggle={toggle}>
-              <h1>Test</h1>
-            </Modal>
-          </LoginWrapper>
-        )}
-      </Toggle>
+      <LoginWrapper>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="icon-user"
+        >
+          <path class="primary" d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+          <path
+            class="secondary"
+            d="M21 20v-1a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v1c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2z"
+            transform="translate(0 -1)"
+          />
+        </svg>
+        <p>Login</p>
+      </LoginWrapper>
       <h1>Sell Your Images</h1>
       <CartWrapper>
         <svg
@@ -51,21 +43,45 @@ function Header() {
 }
 
 const HeaderWrapper = styled.header`
-  height: 72px;
+  min-height: 72px;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32px;
+  padding: 0 24px;
   background-color: ${blue.vivid[1000]};
   color: white;
+  @media (max-width: 480px) {
+    &  {
+      padding: 0 6px;
+    }
+  }
 `;
 
 const LoginWrapper = styled.div`
-  width: 96px;
   height: 72px;
-  background: red;
   cursor: pointer;
-  color: black;
+  color: ${grey[100]};
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-overflow: clip;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  svg {
+    height: calc(72px - 24px);
+    width: calc(72px - 24px);
+    fill: ${grey[100]};
+  }
+
+  @media (max-width: 480px) {
+    svg  {
+      height: calc(72px - 32px);
+      width: calc(72px - 32px);
+    }
+  }
 `;
 const CartWrapper = styled(LoginWrapper)``;
 export default Header;
