@@ -1,38 +1,38 @@
 export const SAMPLE_IMAGES = {
   image1: {
-    name: "#LETSGOHEALTHY",
-    author: "Pierre",
-    price: "300",
+    name: "Bichon Maltais",
+    author: "Maman",
+    price: "9900",
     url: "/images/image1.jpg",
-    status: "unavailable"
+    status: "available"
   },
   image2: {
-    name: "Voiture orange.",
-    author: "Emilie",
-    price: "200",
+    name: "Samedi soir en ville.",
+    author: "Pierre",
+    price: "400",
     url: "/images/image2.jpg",
     status: "available"
   },
   image3: {
-    name: "Samedi soir.",
-    author: "Pierre",
-    price: "400",
+    name: "Coucou bébé !",
+    author: "Admin",
+    price: "800",
     url: "/images/image3.jpg",
     status: "available"
   },
   image4: {
-    name: "Lac.",
-    author: "Robin",
-    price: "100",
+    name: "Voiture orange des années 90s.",
+    author: "Emilie",
+    price: "200",
     url: "/images/image4.jpg",
     status: "available"
   },
   image5: {
-    name: "Bébé !!!",
-    author: "Admin",
-    price: "800",
+    name: "#LETSGOHEALTHY",
+    author: "Pierre",
+    price: "300",
     url: "/images/image5.jpg",
-    status: "available"
+    status: "unavailable"
   },
   image6: {
     name: "Mona Lisa.",
@@ -42,9 +42,9 @@ export const SAMPLE_IMAGES = {
     status: "available"
   },
   image7: {
-    name: "Bichon Maltais",
-    author: "Maman",
-    price: "9900",
+    name: "Cabanon sur le Lac.",
+    author: "Robin",
+    price: "100",
     url: "/images/image7.jpg",
     status: "available"
   }
