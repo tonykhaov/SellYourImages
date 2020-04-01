@@ -4,26 +4,29 @@ import {
   double_box_shadow,
   pink,
   grey,
-  black
+  black,
+  red
 } from "../Utilities";
 import styled from "styled-components";
 import { Card, Button } from "../styled_components";
 
 function Image(props) {
+
   const removeImage = () => {
     console.log(props.index);
     props.deleteImage(props.index);
   };
-  const { name, price, author, url } = props.image;
+  const { name, price, author, url, deletable } = props.image;
   return (
     <ImageWrapper>
       <ImageCard>
         <img height="224px" src={url} alt={name} />
-        <DeleteImage onClick={removeImage} />
+        {deletable && <DeleteImage onClick={removeImage}>X</DeleteImage>}
         <ImageDescription>
           <h1>{name}</h1>
+          {deletable && <Deletable>image supprimable</Deletable>}
           <Author>
-            par <span>{author}</span> !
+            merci <span>{author}</span> !
           </Author>
           <PriceCartWrapper>
             <Price>{formatPrice(price)}</Price>
@@ -34,7 +37,18 @@ function Image(props) {
     </ImageWrapper>
   );
 }
-const DeleteImage = styled.div``;
+const DeleteImage = styled.div`
+  opacity: 0;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 32px;
+  font-weight: 900;
+  color: ${red.vivid[600]};
+`;
 
 const ImageWrapper = styled.div`
   overflow: hidden;
@@ -42,17 +56,12 @@ const ImageWrapper = styled.div`
   border-radius: 0 0 8px 8px;
   &:hover {
     box-shadow: ${double_box_shadow[3]};
-    transform: translate(-2px, -2px);
+    transform: translate(-1px, -1px);
     transition: all 0.1s ease-in;
   }
   &:hover ${DeleteImage} {
-    content: "X";
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s;
   }
 `;
 
@@ -78,6 +87,12 @@ const ImageDescription = styled.div`
     font-weight: 400;
   }
 `;
+
+const Deletable = styled.p`
+  font-size: 16px;
+  color: ${grey[500]};
+  margin: 6px 0 0;
+`
 
 const Author = styled.p`
   margin: 12px 0 16px;

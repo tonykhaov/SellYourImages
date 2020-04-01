@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { double_box_shadow, blue, grey } from "../Utilities";
+import { box_shadow, blue, grey } from "../Utilities";
 import styled from "styled-components";
 import { Card, Button, Input } from "../styled_components";
 
@@ -14,7 +14,8 @@ function AddImage({ addImage, match }) {
       name: nameRef.current.value,
       author: match.params.username,
       url: urlRef.current.value,
-      price: priceRef.current.value
+      price: priceRef.current.value,
+      deletable: true,
     };
     addImage(image);
     e.currentTarget.reset();
@@ -37,7 +38,7 @@ function AddImage({ addImage, match }) {
           <label htmlFor="">Prix de l'image (100 pour 1€)</label>
           <Input
             type="number"
-            defaultValue="0"
+            defaultValue="100"
             min="0"
             placeholder="Prix de l'image"
             required
@@ -57,8 +58,8 @@ const AddImageWrapper = styled.div`
   position: relative;
   border-radius: 0 0 8px 8px;
   &:hover {
-    box-shadow: ${double_box_shadow[3]};
-    transform: translate(-2px, -2px);
+    box-shadow: ${box_shadow[4]};
+    transform: translate(-1px, -1px);
     transition: all 0.1s ease-in;
   }
 `;

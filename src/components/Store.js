@@ -27,6 +27,7 @@ function Store(props) {
 
 const StoreWrapper = styled.div`
   min-height: calc(100vh - 72px);
+  padding-bottom: 48px;
 `;
 
 const ImagesGrid = styled.div`
