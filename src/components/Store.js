@@ -6,13 +6,19 @@ import AddImage from "./AddImage";
 function Store(props) {
   return (
     <StoreWrapper>
-      <StoreTitle></StoreTitle>
       {props.images && (
         <ImagesGrid>
-          {Object.keys(props.images).map(key => (
-            <Image key={key} image={props.images[key]} index={key} />
-          ))}
-          <AddImage />
+          {Object.keys(props.images)
+            .sort((a, b) => a + b)
+            .map(key => (
+              <Image
+                key={key}
+                image={props.images[key]}
+                index={key}
+                deleteImage={props.deleteImage}
+              />
+            ))}
+          <AddImage addImage={props.addImage} {...props} />
         </ImagesGrid>
       )}
     </StoreWrapper>
@@ -23,17 +29,9 @@ const StoreWrapper = styled.div`
   min-height: calc(100vh - 72px);
 `;
 
-const StoreTitle = styled.div`
-  text-align: center;
-  padding: 16px 0 24px;
-  h1 {
-    font-size: 24px;
-    font-weight: 400;
-  }
-`;
-
 const ImagesGrid = styled.div`
-  max-width: 1360px;
+  max-width: 1440px;
+  padding-top: 32px;
   margin: auto;
   display: grid;
   justify-content: center;

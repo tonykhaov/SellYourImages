@@ -10,11 +10,16 @@ import styled from "styled-components";
 import { Card, Button } from "../styled_components";
 
 function Image(props) {
+  const removeImage = () => {
+    console.log(props.index);
+    props.deleteImage(props.index);
+  };
   const { name, price, author, url } = props.image;
   return (
     <ImageWrapper>
       <ImageCard>
         <img height="224px" src={url} alt={name} />
+        <DeleteImage onClick={removeImage} />
         <ImageDescription>
           <h1>{name}</h1>
           <Author>
@@ -29,6 +34,7 @@ function Image(props) {
     </ImageWrapper>
   );
 }
+const DeleteImage = styled.div``;
 
 const ImageWrapper = styled.div`
   overflow: hidden;
@@ -38,6 +44,15 @@ const ImageWrapper = styled.div`
     box-shadow: ${double_box_shadow[3]};
     transform: translate(-2px, -2px);
     transition: all 0.1s ease-in;
+  }
+  &:hover ${DeleteImage} {
+    content: "X";
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
   }
 `;
 
@@ -83,13 +98,13 @@ const Price = styled.p`
   font-size: 24px;
   font-weight: 400;
   color: ${black[900]};
+  max-width: 128px;
 `;
 
 const CartButton = styled(Button)`
   box-shadow: none;
   background: ${pink.vivid[600]};
   color: white;
-  font-size: 14px;
   font-weight: 700;
   border-radius: 4px;
   &:hover {

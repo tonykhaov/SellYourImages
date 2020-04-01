@@ -1,31 +1,52 @@
-import React from "react";
-import { double_box_shadow, pink, grey, blue, black } from "../Utilities";
+import React, { useRef } from "react";
+import { double_box_shadow, blue, grey } from "../Utilities";
 import styled from "styled-components";
 import { Card, Button, Input } from "../styled_components";
 
-function AddImage() {
+function AddImage({ addImage, match }) {
+  const nameRef = useRef(null);
+  const urlRef = useRef(null);
+  const priceRef = useRef(null);
+
+  const createImage = e => {
+    e.preventDefault();
+    const image = {
+      name: nameRef.current.value,
+      author: match.params.username,
+      url: urlRef.current.value,
+      price: priceRef.current.value
+    };
+    addImage(image);
+    e.currentTarget.reset();
+  };
+
   return (
     <AddImageWrapper>
       <ImageCard>
-        <ImageArea>
-          <h1>Vendre une image</h1>
-          <InputImage
+        <AddImageForm onSubmit={createImage}>
+          <h1>
+            Ajouter une <br /> nouvelle image
+          </h1>
+          <label htmlFor="">Nom de l'image</label>
+          <Input
             type="text"
-            placeholder="URL de l'image"
-            id="img-input"
+            placeholder="Nom de l'image"
             required
+            ref={nameRef}
           />
-        </ImageArea>
-        <ImageDescription>
-          <h1>name</h1>
-          <Author>
-            par <span>author</span> !
-          </Author>
-          <PriceCartWrapper>
-            <Price>price</Price>
-            <AddButton>Ajouter</AddButton>
-          </PriceCartWrapper>
-        </ImageDescription>
+          <label htmlFor="">Prix de l'image (100 pour 1€)</label>
+          <Input
+            type="number"
+            defaultValue="0"
+            min="0"
+            placeholder="Prix de l'image"
+            required
+            ref={priceRef}
+          />
+          <label htmlFor="">URL de l'image</label>
+          <Input type="text" placeholder="http://" required ref={urlRef} />
+          <ButtonAdd type="submit">Ajouter</ButtonAdd>
+        </AddImageForm>
       </ImageCard>
     </AddImageWrapper>
   );
@@ -47,69 +68,48 @@ const ImageCard = styled(Card)`
   align-items: center;
   flex-direction: column;
   padding: 0;
-  padding-bottom: 12px;
-  border-radius: 0 0 8px 8px;
+  min-height: 400px;
+  border-radius: 8px;
+  background-color: ${grey.cool[100]};
+  &:hover {
+    background-color: white;
+  }
 `;
 
-const ImageArea = styled.div`
-  height: 224px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 12px 0;
-  justify-content: space-between;
-  align-items: center;
-  background-color: ${grey[200]};
-`;
-
-const InputImage = styled(Input)``;
-
-const ImageDescription = styled.div`
+const AddImageForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  padding: 24px 24px 0;
+  height: 100%;
   width: 100%;
-  overflow-wrap: break-word;
-  padding: 24px 24px;
+
   h1 {
-    font-size: 24px;
-    font-weight: 400;
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  label {
+    font-weight: 500;
+  }
+  input {
+    margin: 4px 0 12px;
   }
 `;
 
-const Author = styled.p`
-  margin: 12px 0 16px;
-  color: ${grey[600]};
-  span {
-    color: ${grey[700]};
-  }
-`;
-
-const PriceCartWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`;
-
-const Price = styled.p`
-  font-size: 24px;
-  font-weight: 400;
-  color: ${black[900]};
-`;
-
-const AddButton = styled(Button)`
+const ButtonAdd = styled(Button)`
+  margin-top: 4px;
+  color: ${blue[800]};
+  border: 1px solid ${blue[800]};
   box-shadow: none;
-  background: ${blue.vivid[600]};
-  color: white;
-  font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   border-radius: 4px;
   &:hover {
+    background-color: ${blue[800]};
     box-shadow: none;
-    background: ${blue[500]};
+    font-weight: 700;
+    color: white;
   }
 `;
 export default AddImage;
