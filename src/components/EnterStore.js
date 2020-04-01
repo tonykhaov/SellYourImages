@@ -1,20 +1,15 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { Button, Input, Card } from "../styled_components";
-import { orange, grey, double_box_shadow } from "../Utilities";
+import { grey, double_box_shadow, pink } from "../Utilities";
 
 function EnterStore(props) {
   const inputEl = useRef(null);
 
-  useEffect(() => {
-    props.setUsername(null);
-  });
-
   const handleSubmit = e => {
     e.preventDefault();
     const username = inputEl.current.value;
-    props.history.push(`/`);
-    props.setUsername(username);
+    props.history.push(`/store/${username}`);
   };
 
   return (
@@ -42,7 +37,7 @@ const CardWrapper = styled(Card)`
   margin: auto;
   margin-top: 32px;
   padding: 32px;
-  background-color: ${grey.cool[200]};
+  background-color: ${grey.cool[100]};
   box-shadow: ${double_box_shadow[4]};
 `;
 
@@ -75,14 +70,14 @@ const InputForm = styled(Input)`
   margin: 24px 0 12px;
   padding: 10px 16px;
   width: 100%;
-  background-color: white;
+  background-color: ${grey[100]};
   &:focus {
-    background-color: ${grey[100]};
+    background-color: white;
   }
 `;
 
 const ButtonForm = styled(Button)`
-  background-color: ${orange[500]};
+  background-color: ${pink.vivid[500]};
   font-size: 16px;
   padding: 10px 12px;
   color: white;
@@ -90,9 +85,9 @@ const ButtonForm = styled(Button)`
   margin-top: 12px;
   box-shadow: none;
   width: 100%;
-  border-top: 1px solid ${orange[300]};
+  border-top: 1px solid ${pink.vivid[300]};
   &:hover {
-    background-color: ${orange[400]};
+    background-color: ${pink.vivid[400]};
   }
   &:active {
     box-shadow: none;
