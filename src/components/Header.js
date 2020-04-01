@@ -40,7 +40,7 @@ function Header(props) {
 }
 
 const HeaderWrapper = styled.header`
-  min-height: 72px;
+  min-height: 80px;
   text-align: center;
   display: flex;
   align-items: center;

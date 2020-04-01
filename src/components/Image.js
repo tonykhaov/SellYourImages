@@ -38,7 +38,6 @@ function Image(props) {
   );
 }
 const DeleteImage = styled.div`
-  opacity: 0;
   position: absolute;
   top: 6px;
   right: 12px;
@@ -46,6 +45,8 @@ const DeleteImage = styled.div`
   font-size: 32px;
   font-weight: 900;
   color: ${red.vivid[600]};
+  width: 24px;
+  height: 24px;
 `;
 
 const ImageWrapper = styled.div`
@@ -56,12 +57,6 @@ const ImageWrapper = styled.div`
     box-shadow: ${double_box_shadow[3]};
     transform: translate(-1px, -1px);
     transition: all 0.1s ease-in;
-  }
-  &:hover ${DeleteImage} {
-    opacity: 1;
-    transition: opacity 0.5s;
-    width: 24px;
-    height: 24px;
   }
 `;
 

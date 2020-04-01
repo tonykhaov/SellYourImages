@@ -35,7 +35,7 @@ function AddImage({ addImage, match }) {
             required
             ref={nameRef}
           />
-          <label htmlFor="">Prix de l'image (100 pour 1€)</label>
+          <label htmlFor="">Prix de l'image (100 pour 1,00€)</label>
           <Input
             type="number"
             defaultValue="100"
@@ -80,7 +80,7 @@ const AddImageForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 24px;
+  padding: 24px 12px;
   padding-bottom: 32px;
   height: 100%;
   width: 100%;

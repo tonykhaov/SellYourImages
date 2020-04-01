@@ -39,6 +39,10 @@ const CardWrapper = styled(Card)`
   padding: 32px;
   background-color: ${grey.cool[100]};
   box-shadow: ${double_box_shadow[4]};
+
+  @media (max-width: 768px) {
+    padding: 32px 12px;
+  }
 `;
 
 const FormWrapper = styled.form`
@@ -100,12 +104,10 @@ const Author = styled.a`
   bottom: 8px;
   text-align: center;
   font-size: 14px;
-  font-family: Poppins;
   font-weight: 300;
   color: white;
   display: flex;
   letter-spacing: -0.01rem;
-
   &:hover {
     color: ${grey[200]};
   }
