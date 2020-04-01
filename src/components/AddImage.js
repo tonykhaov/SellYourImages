@@ -68,7 +68,6 @@ const ImageCard = styled(Card)`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0;
   min-height: 400px;
   border-radius: 8px;
   background-color: ${grey.cool[100]};
@@ -81,7 +80,8 @@ const AddImageForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 24px 24px 0;
+  padding: 24px;
+  padding-bottom: 32px;
   height: 100%;
   width: 100%;
 
