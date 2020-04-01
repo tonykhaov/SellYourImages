@@ -3,30 +3,42 @@ export const SAMPLE_IMAGES = {
     name: "Bichon Maltais",
     author: "Maman",
     price: "9900",
-    url: "/images/image1.jpg"
+    url: "/images/image1.jpg",
+    deletable: false,
   },
   image1585755410761: {
     name: "Samedi soir en ville.",
     author: "Pierre",
     price: "400",
-    url: "/images/image2.jpg"
+    url: "/images/image2.jpg",
+    deletable: false,
   },
   image1585755410762: {
     name: "Coucou bébé !",
     author: "Admin",
     price: "800",
-    url: "/images/image3.jpg"
+    url: "/images/image3.jpg",
+    deletable: false,
   },
   image1585755410764: {
-    name: "#LETSGOHEALTHY",
-    author: "Pierre",
+    name: "Toi, viens 1v1 SSB",
+    author: "Tony KHAOV",
     price: "300",
-    url: "/images/image5.jpg"
+    url: "https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    deletable: false,
   },
   image1585755410765: {
     name: "Mona Lisa.",
     author: "Léonard De Vinci",
     price: "600",
-    url: "/images/image6.jpg"
+    url: "/images/image6.jpg",
+    deletable: false,
+  },
+  image1585755410766: {
+    name: "Bikepack 2021.",
+    author: "Tony KHAOV",
+    price: "690",
+    url: "https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+    deletable: false,
   }
 };
