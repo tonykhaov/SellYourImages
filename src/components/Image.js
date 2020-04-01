@@ -39,8 +39,6 @@ function Image(props) {
 }
 const DeleteImage = styled.div`
   opacity: 0;
-  width: 24px;
-  height: 24px;
   position: absolute;
   top: 6px;
   right: 12px;
@@ -62,6 +60,8 @@ const ImageWrapper = styled.div`
   &:hover ${DeleteImage} {
     opacity: 1;
     transition: opacity 0.5s;
+    width: 24px;
+    height: 24px;
   }
 `;
 
