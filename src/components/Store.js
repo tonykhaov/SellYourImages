@@ -26,7 +26,6 @@ function Store(props) {
 }
 
 const StoreWrapper = styled.div`
-  min-height: calc(100vh - 72px);
   padding-bottom: 48px;
 `;
 
@@ -38,6 +37,11 @@ const ImagesGrid = styled.div`
   justify-content: center;
   align-items: start;
   grid-template-columns: repeat(auto-fill, 320px);
-  grid-gap: 32px;
+  grid-gap: 24px;
+
+  @media (max-width: 768px) {
+    padding-top: 24px;
+    grid-gap: 12px;
+  }
 `;
 export default Store;
