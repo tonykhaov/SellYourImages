@@ -7,7 +7,7 @@ import { SAMPLE_IMAGES } from "../sample-images";
 class App extends Component {
   state = {
     images: {},
-    order: {}
+    order: {},
   };
 
   addImage = image => {
@@ -16,11 +16,8 @@ class App extends Component {
     this.setState({ images: imagesCopy });
   };
 
+
   deleteImage = image => {
-    // remove from the state
-    // const imagesCopy = this.state.images;
-    // delete imagesCopy[image];
-    // this.setState({ images: imagesCopy });
     this.removeFromFirebase(image);
   };
 
@@ -29,9 +26,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // const localStorageImageRef = JSON.parse(localStorage.getItem("images"));
-    // if (!localStorageImageRef) this.setState({ images: SAMPLE_IMAGES });
-    // else this.setState({ images: localStorageImageRef });
+    // const { username } = this.props.match.params;
+    // const localStorageOrder = JSON.parse(localStorage.getItem(username));
+    // if (localStorageOrder) this.setState({ order: localStorageOrder });
     this.ref = base.syncState("images", {
       context: this,
       state: "images"
@@ -41,7 +38,8 @@ class App extends Component {
 
   componentDidUpdate() {
     // const { username } = this.props.match.params;
-    // localStorage.setItem(`${username}`, JSON.stringify(this.state.images));
+    // localStorage.setItem(username, JSON.stringify(this.state.order));
+    this.props.setImagesHook(this.state.images);
   }
   render() {
     return (
@@ -50,6 +48,8 @@ class App extends Component {
           images={this.state.images}
           addImage={this.addImage}
           deleteImage={this.deleteImage}
+          order={this.state.order}
+          addToOrder={this.props.addToOrder}
           {...this.props}
         />
       </>

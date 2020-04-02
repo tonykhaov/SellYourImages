@@ -5,7 +5,6 @@ function Toggle(props) {
 
   const toggle = () => {
     setOn(!on);
-    console.log(on);
   };
   const { children } = props;
   return children({ on, toggle });

@@ -12,16 +12,12 @@ import { Card, Button } from "../styled_components";
 
 function Image(props) {
 
-  const removeImage = () => {
-    console.log(props.index);
-    props.deleteImage(props.index);
-  };
   const { name, price, author, url, deletable } = props.image;
   return (
     <ImageWrapper>
       <ImageCard>
         <img height="224px" src={url} alt={name} />
-        {deletable && <DeleteImage onClick={removeImage}>X</DeleteImage>}
+        {deletable && <DeleteImage onClick={() => props.deleteImage(props.index)}>X</DeleteImage>}
         <ImageDescription>
           <h1>{name}</h1>
           <Author>
@@ -29,7 +25,7 @@ function Image(props) {
           </Author>
           <PriceCartWrapper>
             <Price>{formatPrice(price)}</Price>
-            <CartButton>Buy</CartButton>
+            <CartButton onClick={() => props.addToOrder(props.index)}>Buy</CartButton>
           </PriceCartWrapper>
         </ImageDescription>
       </ImageCard>

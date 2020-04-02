@@ -16,6 +16,7 @@ function Store(props) {
                 image={props.images[key]}
                 index={key}
                 deleteImage={props.deleteImage}
+                addToOrder={props.addToOrder}
               />
             ))}
           <AddImage addImage={props.addImage} {...props} />

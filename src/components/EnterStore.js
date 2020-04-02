@@ -37,7 +37,7 @@ const CardWrapper = styled(Card)`
   margin: auto;
   margin-top: 32px;
   padding: 32px;
-  background-color: ${grey.blue[100]};
+  background-color: ${grey.blue[200]};
   box-shadow: ${double_box_shadow[4]};
 
   @media (max-width: 768px) {
