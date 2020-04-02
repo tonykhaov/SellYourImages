@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { blue, grey } from "../Utilities";
 import { Link } from "react-router-dom";
+import Toggle from "./Toggle";
+import OrderCart from "./OrderCart";
 
 function Header(props) {
   const { username } = props.match.params;
   return (
-    <HeaderWrapper>
+    <><HeaderWrapper>
       <LoginWrapper>
         {username && (
           <>
@@ -26,21 +28,27 @@ function Header(props) {
       </Link>
       <CartWrapper>
         {username && (
-          <>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M7 4h14a1 1 0 0 1 .9 1.45l-4 8a1 1 0 0 1-.9.55H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" />
-              <path d="M17.73 19a2 2 0 1 1-3.46 0H8.73a2 2 0 1 1-3.42-.08A3 3 0 0 1 5 13.17V4H3a1 1 0 1 1 0-2h3a1 1 0 0 1 1 1v10h11a1 1 0 0 1 0 2H6a1 1 0 0 0 0 2h12a1 1 0 0 1 0 2h-.27z" />
-            </svg>
-            <p>Panier</p>
-          </>
+          <Toggle>
+            {({ on, toggle }) => (
+              <>
+                <span onClick={toggle}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M7 4h14a1 1 0 0 1 .9 1.45l-4 8a1 1 0 0 1-.9.55H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" />
+                  <path d="M17.73 19a2 2 0 1 1-3.46 0H8.73a2 2 0 1 1-3.42-.08A3 3 0 0 1 5 13.17V4H3a1 1 0 1 1 0-2h3a1 1 0 0 1 1 1v10h11a1 1 0 0 1 0 2H6a1 1 0 0 0 0 2h12a1 1 0 0 1 0 2h-.27z" />
+                </svg>
+                  <p>Panier</p></span>
+                {on && <OrderCart toggle={toggle} />}
+              </>
+            )}
+          </Toggle>
         )}
       </CartWrapper>
     </HeaderWrapper>
+    </>
   );
 }
 
 const HeaderWrapper = styled.header`
-  min-height: 80px;
+  min-height: 72px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -52,7 +60,7 @@ const HeaderWrapper = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 10;
   @media (max-width: 480px) {
     &  {
       padding: 0 6px;
@@ -88,10 +96,11 @@ const LoginWrapper = styled.div`
 const CartWrapper = styled(LoginWrapper)`
   cursor: pointer;
   &:hover {
-    color: ${grey[200]};
+    color: ${grey[400]};
     svg {
-      fill: ${grey[200]};
+      fill: ${grey[400]};
     }
   }
 `;
+
 export default Header;
