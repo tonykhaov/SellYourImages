@@ -24,13 +24,12 @@ function Image(props) {
         {deletable && <DeleteImage onClick={removeImage}>X</DeleteImage>}
         <ImageDescription>
           <h1>{name}</h1>
-          {deletable && <Deletable>image supprimable</Deletable>}
           <Author>
-            merci <span>{author}</span> !
+            We love you <span>{author}</span>!
           </Author>
           <PriceCartWrapper>
             <Price>{formatPrice(price)}</Price>
-            <CartButton>Acheter</CartButton>
+            <CartButton>Buy</CartButton>
           </PriceCartWrapper>
         </ImageDescription>
       </ImageCard>
@@ -43,10 +42,8 @@ const DeleteImage = styled.div`
   right: 12px;
   cursor: pointer;
   font-size: 32px;
-  font-weight: 900;
+  font-weight: 700;
   color: ${red.vivid[600]};
-  width: 24px;
-  height: 24px;
 `;
 
 const ImageWrapper = styled.div`
@@ -78,19 +75,13 @@ const ImageDescription = styled.div`
   overflow-wrap: break-word;
   padding: 24px 24px;
   h1 {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 400;
   }
 `;
 
-const Deletable = styled.p`
-  font-size: 16px;
-  color: ${grey[500]};
-  margin: 6px 0 0;
-`
-
 const Author = styled.p`
-  margin: 12px 0 16px;
+  margin: 12px 0 20px;
   color: ${grey[600]};
   span {
     color: ${grey[700]};
@@ -102,10 +93,11 @@ const PriceCartWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-top: 4px;
 `;
 
 const Price = styled.p`
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 400;
   color: ${black[900]};
   max-width: 128px;

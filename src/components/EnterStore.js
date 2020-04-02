@@ -17,15 +17,15 @@ function EnterStore(props) {
       <FormWrapper onSubmit={handleSubmit}>
         <TitleForm>Connexion</TitleForm>
         <Hr />
-        <DescriptionForm>Entre ton nom d'utilisateur</DescriptionForm>
+        <DescriptionForm>Enter your username</DescriptionForm>
         <InputForm
           ref={inputEl}
           type="text"
-          placeholder="Nom d'utilisateur"
+          placeholder="Username"
           required
         />
-        <ButtonForm type="submit">Valider</ButtonForm>
-        <Author href="http://github.com/tonykhaov">par Tony KHAOV</Author>
+        <ButtonForm type="submit">Enter</ButtonForm>
+        <Author href="http://github.com/tonykhaov">by Tony KHAOV</Author>
       </FormWrapper>
       <Background />
     </CardWrapper>
@@ -37,7 +37,7 @@ const CardWrapper = styled(Card)`
   margin: auto;
   margin-top: 32px;
   padding: 32px;
-  background-color: ${grey.cool[100]};
+  background-color: ${grey.blue[100]};
   box-shadow: ${double_box_shadow[4]};
 
   @media (max-width: 768px) {
@@ -122,6 +122,6 @@ const Background = styled.div`
   right: 0;
   z-index: -10;
   background: black;
-  opacity: 0.5;
+  opacity: 0.7;
 `;
 export default EnterStore;

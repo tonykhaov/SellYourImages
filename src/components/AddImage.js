@@ -26,25 +26,25 @@ function AddImage({ addImage, match }) {
       <ImageCard>
         <AddImageForm onSubmit={createImage}>
           <h1>
-            Ajouter une <br /> nouvelle image
+            Sell your image
           </h1>
-          <label htmlFor="">Nom de l'image</label>
+          <label htmlFor="">Name of the image</label>
           <Input
             type="text"
-            placeholder="Nom de l'image"
+            placeholder="Name of the image"
             required
             ref={nameRef}
           />
-          <label htmlFor="">Prix de l'image (100 pour 1,00€)</label>
+          <label htmlFor="">Price (100 for 1,00€)</label>
           <Input
             type="number"
             defaultValue="100"
             min="0"
-            placeholder="Prix de l'image"
+            placeholder="Image's price"
             required
             ref={priceRef}
           />
-          <label htmlFor="">URL de l'image</label>
+          <label htmlFor="">Image's URL</label>
           <Input type="text" placeholder="http://" required ref={urlRef} />
           <ButtonAdd type="submit">Ajouter</ButtonAdd>
         </AddImageForm>
@@ -80,7 +80,7 @@ const AddImageForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 24px 12px;
+  padding: 32px 12px;
   padding-bottom: 32px;
   height: 100%;
   width: 100%;
@@ -100,7 +100,7 @@ const AddImageForm = styled.form`
 `;
 
 const ButtonAdd = styled(Button)`
-  margin-top: 4px;
+  margin-top: 12px;
   color: ${blue[800]};
   border: 1px solid ${blue[800]};
   box-shadow: none;
