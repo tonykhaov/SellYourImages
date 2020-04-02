@@ -5,7 +5,7 @@ export const Button = styled.button`
   padding: 10px 16px;
   border: 0;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: ${double_box_shadow[1]};
   cursor: pointer;
   &:active {
