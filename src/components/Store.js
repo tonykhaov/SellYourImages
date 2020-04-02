@@ -9,7 +9,7 @@ function Store(props) {
       {props.images && (
         <ImagesGrid>
           {Object.keys(props.images)
-            .sort((a, b) => a + b)
+            .sort((a, b) => a < b)
             .map(key => (
               <Image
                 key={key}
