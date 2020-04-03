@@ -5,30 +5,29 @@ import { blue, grey, formatPrice } from '../Utilities';
 
 function OrderCart(props) {
     const renderOrder = key => {
-        const image = props.imagesHook[key];
+        const image = props.images[key];
         const count = props.order[key];
         if (!image) return null;
         return (
             <li key={key}>
-                <span><p>Image:</p>{image.name}</span>
-                <span><p>by:</p>{image.author}</span>
-                <span><p>price:</p>{formatPrice(image.price)}</span>
-                <span><p>count:</p>{count}</span>
+                <span>{count} <strong>{image.name}</strong> ({formatPrice(image.price)}/unit) <button onClick={() => props.removeFromOrder(key)}>X</button></span>
+                <span>{formatPrice(image.price * count)}</span>
             </li>
         )
     }
     const orderIds = Object.keys(props.order);
     const total = orderIds.reduce((prevTotal, key) => {
-        const image = props.imagesHook[key];
+        const image = props.images[key];
         const count = props.order[key];
         if (image) {
             return prevTotal + image.price * count;
         }
         return prevTotal;
     }, 0);
+
     return (
         <OrderCartWrapper>
-            <h1>My Cart</h1>
+            <h1>My Shopping Cart</h1>
             <hr />
             <CloseCart onClick={props.toggle}>X</CloseCart>
             <OrderItems>
@@ -36,14 +35,14 @@ function OrderCart(props) {
             </OrderItems>
             <TotalButtonWrapper>
                 <h1>Total: {formatPrice(total)}</h1>
-                <ButtonCart onClick={() => alert('Reach me at: tony.khaov@gmail.com ;)')}>Pay</ButtonCart>
+                <ButtonCart onClick={() => alert('Reach me at: tony.khaov@gmail.com ;)')}>Checkout</ButtonCart>
             </TotalButtonWrapper>
         </OrderCartWrapper>
     )
 }
 
 const OrderCartWrapper = styled.div`
-    position: absolute;
+    position: fixed;
     width: 25vw;
     height: 100vh;
     display: flex;
@@ -51,10 +50,12 @@ const OrderCartWrapper = styled.div`
     background-color: white;
     top: 0;
     right: 0;
+    bottom: 0;
     color: black;
-    padding: 48px 12px;
+    z-index: 999;
+    padding: 24px 12px;
     cursor: default;
-
+    text-align: left;
     hr {
         background-color: ${grey[300]};
         height: 1px;
@@ -75,9 +76,6 @@ const OrderCartWrapper = styled.div`
 
     @media (max-width: 1024px) {
         width: 75vw;
-        h1 {
-        font-size: 48px;
-        }
     }
 
     @media(max-width: 768px) {
@@ -100,8 +98,20 @@ const CloseCart = styled.div`
 
 const OrderItems = styled.ul`
     text-align: left;
+    max-height: 560px;
     overflow-y: scroll;
-    padding-bottom: 72px;
+    li {
+        display: flex;
+        justify-content: space-between;
+        padding: 24px 6px;
+        span:nth-child(1) {
+            overflow: hidden;
+            text-overflow: clip;
+        }
+    }
+    li:nth-child(even) {
+        background-color: ${grey.cool[200]};
+    }
 `
 
 const TotalButtonWrapper = styled.div`
