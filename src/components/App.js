@@ -3,7 +3,7 @@ import _ from "lodash";
 import Store from "./Store";
 import base from "../base";
 import { SAMPLE_IMAGES } from "../sample-images";
-
+import ShoppingCart from "./ShoppingCart";
 class App extends Component {
   state = {
     images: {},
@@ -16,6 +16,18 @@ class App extends Component {
     this.setState({ images: imagesCopy });
   };
 
+  addToOrder = key => {
+    const orderCopy = this.state.order;
+    orderCopy[key] = orderCopy[key] + 1 || 1;
+    this.setState({ order: orderCopy });
+    console.log(this.state.order)
+  }
+
+  removeFromOrder = key => {
+    const orderCopy = this.state.order;
+    delete orderCopy[key];
+    this.setState({ order: orderCopy });
+  }
 
   deleteImage = image => {
     this.removeFromFirebase(image);
@@ -26,9 +38,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // const { username } = this.props.match.params;
-    // const localStorageOrder = JSON.parse(localStorage.getItem(username));
-    // if (localStorageOrder) this.setState({ order: localStorageOrder });
+    const { username } = this.props.match.params;
+    const localStorageOrder = JSON.parse(localStorage.getItem(username));
+    if (localStorageOrder) this.setState({ order: localStorageOrder });
     this.ref = base.syncState("images", {
       context: this,
       state: "images"
@@ -37,9 +49,8 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    // const { username } = this.props.match.params;
-    // localStorage.setItem(username, JSON.stringify(this.state.order));
-    this.props.setImagesHook(this.state.images);
+    const { username } = this.props.match.params;
+    localStorage.setItem(username, JSON.stringify(this.state.order));
   }
   render() {
     return (
@@ -49,9 +60,10 @@ class App extends Component {
           addImage={this.addImage}
           deleteImage={this.deleteImage}
           order={this.state.order}
-          addToOrder={this.props.addToOrder}
+          addToOrder={this.addToOrder}
           {...this.props}
         />
+        <ShoppingCart order={this.state.order} images={this.state.images} removeFromOrder={this.removeFromOrder} />
       </>
     );
   }
