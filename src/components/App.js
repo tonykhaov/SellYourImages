@@ -20,7 +20,6 @@ class App extends Component {
     const orderCopy = this.state.order;
     orderCopy[key] = orderCopy[key] + 1 || 1;
     this.setState({ order: orderCopy });
-    console.log(this.state.order)
   }
 
   removeFromOrder = key => {
@@ -29,12 +28,9 @@ class App extends Component {
     this.setState({ order: orderCopy });
   }
 
-  deleteImage = image => {
-    this.removeFromFirebase(image);
-  };
-
-  removeFromFirebase = key => {
+  deleteImage = key => {
     base.remove(`images/${key}`);
+    this.removeFromOrder(key);
   };
 
   componentDidMount() {
