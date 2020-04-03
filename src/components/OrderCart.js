@@ -35,7 +35,7 @@ function OrderCart(props) {
             </OrderItems>
             <TotalButtonWrapper>
                 <h1>Total: {formatPrice(total)}</h1>
-                <ButtonCart onClick={() => alert('Reach me at: tony.khaov@gmail.com ;)')}>Checkout</ButtonCart>
+                <ButtonCart onClick={() => alert('Reach me at: tony.khaov@gmail.com ;)\n +33 6 74 18 86 52 (France)')}>Checkout</ButtonCart>
             </TotalButtonWrapper>
         </OrderCartWrapper>
     )
