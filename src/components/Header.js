@@ -40,13 +40,16 @@ const HeaderWrapper = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  background-color: ${blue[800]};
+  background-color: ${blue[900]};
   color: white;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 10;
+  @media (max-width: 768px) {
+    padding: 0 8px;
+  }
 `;
 
 const LoginWrapper = styled.div`
@@ -55,6 +58,7 @@ const LoginWrapper = styled.div`
   color: ${grey[100]};
   font-size: 16px;
   display: flex;
+  text-overflow: clip;
   flex-direction: column;
   justify-content: center;
   align-items: center;

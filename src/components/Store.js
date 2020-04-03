@@ -27,7 +27,7 @@ function Store(props) {
 }
 
 const StoreWrapper = styled.div`
-  padding-bottom: 48px;
+  padding: 64px;
 `;
 
 const ImagesGrid = styled.div`
